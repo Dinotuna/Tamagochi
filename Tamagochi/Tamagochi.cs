@@ -26,16 +26,34 @@ public class Tamagochi
     private bool isAlive = true;
     private List<string> words = new List<string>() {"Hej"};
     public string name;
+    private int gamble;
     
 
     public void Feed()
     {
         Console.WriteLine($"Du matar {name} och {name} blir mindre hungrig");
-        hunger -= 2;
+        hunger -= Random.Shared.Next(3);
 
         if (hunger < 0)
         {
             hunger = 0;
+        }
+    }
+
+    public void Gamble()
+    {
+        gamble = Random.Shared.Next(2);
+
+        if (gamble == 0)
+        {
+            hunger -= 2;
+            Console.WriteLine($"Bra val du har matat {name}");
+        }
+
+        else
+        {
+            hunger +=2;
+            Console.WriteLine($"Dåligt val! {name} är nu hungrigare");
         }
     }
 
@@ -55,7 +73,7 @@ public class Tamagochi
 
     public void Tick()
     {
-        hunger++;
+        hunger += Random.Shared.Next(3);
         boredom++;
 
         if (hunger > 10 || boredom > 10)
@@ -84,7 +102,9 @@ public class Tamagochi
         {
             boredom = 0;
         }
-    }
+    }   
+
+
 
 
 }

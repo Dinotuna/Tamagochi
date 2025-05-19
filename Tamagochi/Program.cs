@@ -26,7 +26,8 @@ while (tama.GetAlive() == true)
     Console.WriteLine($"(1) Lär {tama.name} ett nytt ord");
     Console.WriteLine($"(2) Säg hej till {tama.name}");
     Console.WriteLine($"(3) Mata {tama.name}");
-    Console.WriteLine($"(4) Gör ingenting");
+    Console.WriteLine($"(4) Gamble med {tama.name}s hunger");
+    Console.WriteLine($"(5) Gör ingenting");
 
     string svar = Console.ReadLine();
 
@@ -47,6 +48,12 @@ while (tama.GetAlive() == true)
     {
         tama.Feed();
     }
+
+    else if (svar =="4")
+    {
+        tama.Gamble();
+    }
+
     else
     {
         Console.WriteLine($"{tama.name} gör inget");
